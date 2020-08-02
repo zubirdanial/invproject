@@ -30,7 +30,7 @@
               <input type="password" class="form-control" id="exampleInputPassword1">
             </div>
             <button type="submit" class="btn btn-primary"><i class="fa fa-lock">&nbsp;</i>Login</button>
-            <span> <a href="#"> Register </a> </span>
+            <span> <a href="register.php"> Register </a> </span>
           </form>
 
           </div>

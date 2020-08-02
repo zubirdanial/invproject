@@ -19,7 +19,7 @@
       <div class="card mx-auto" style="width: 30rem;">
   	        <div class="card-header">Register</div>
   		      <div class="card-body">
-  		        <form id="register_form">
+  		        <form id="register_form" onsubmit="return false" autocomplete="off">
 
   		          <div class="form-group">
   		            <label for="username">Full Name</label>
@@ -50,7 +50,7 @@
   		            <select name="usertype" class="form-control" id="usertype">
   		              <option value="">Choose User Type</option>
   		              <option value="Admin">Admin</option>
-  		              <option value="Other">Staff</option>
+  		              <option value="Other">Other</option>
   		            </select>
   		            <small id="t_error" class="form-text text-muted"></small>
   		          </div>
