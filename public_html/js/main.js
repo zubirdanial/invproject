@@ -88,4 +88,53 @@ $(document).ready(function(){
     }
 
   })
+
+  //UNTUK Login
+  $("#form_login").on("submit",function(){
+    var email = $("#log_email");
+    var pass = $("#log_password");
+    var status = false;
+
+    if (email.val() == "") {
+      email.addClass("border-danger");
+      $("#e_error").html("<span class='text-danger'>Please enter email address</span>");
+      status = false;
+    }else {
+      email.removeClass("border-danger");
+      $("#e_error").html("");
+      status = true;
+    }
+
+    if (pass.val() == "") {
+      pass.addClass("border-danger");
+      $("#p_error").html("<span class='text-danger'>Please enter password</span>");
+      status = false;
+    }else {
+      pass.removeClass("border-danger");
+      $("#p_error").html("");
+      status = true;
+    }
+
+    if(status){
+      $.ajax({
+        url : DOMAIN+"/includes/process.php",
+        method : "POST",
+        data : $("#form_login").serialize(),
+        success : function(data){
+          if(data == "NOT_REGISTERED"){
+            email.addClass("border-danger");
+            $("#e_error").html("<span class='text-danger'>User is not registered</span>");
+
+          }else if (data == "PASSWORD_NOT_MATCHED") {
+            pass.addClass("border-danger");
+            $("#p_error").html("<span class='text-danger'>Please enter correct password</span>");
+            status = false;
+          }else {
+            console.log(data);
+          window.location.href = DOMAIN+"/dashboard.php";
+          }
+        }
+      })
+    }
+  })
 })
