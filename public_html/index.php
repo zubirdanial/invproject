@@ -1,3 +1,10 @@
+<?php
+include_once("./database/constants.php");
+if (isset($_SESSION["userid"])) {
+  header("location:".DOMAIN."/dashboard_staff.php");
+}
+
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,9 +16,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="./js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="./includes/style.css">
+    <script type="text/javascript" rel="stylesheet" src="./js/main.js"></script>
   </head>
   <body>
+    <div class="overlay"><div class="loader"></div></div>
     <!-- Navabr -->
 <?php include_once("./templates/header.php"); ?>
   <br/><br/>
@@ -42,6 +51,17 @@
               <input type="password" class="form-control" name="log_password" id="log_password">
               <small id="p_error" class="form-text text-muted"></small>
             </div>
+
+            <div class="form-group">
+              <label for="usertype">Usertype</label>
+              <select name="usertype" class="form-control" id="usertype">
+                <option value="">Choose User Type</option>
+                <option value="Staff">Staff</option>
+                <option value="Admin">Admin</option>
+              </select>
+              <small id="t_error" class="form-text text-muted"></small>
+            </div>
+
             <button type="submit" class="btn btn-primary"><i class="fa fa-lock">&nbsp;</i>Login</button>
             <span> <a href="register.php"> Register </a> </span>
           </form>

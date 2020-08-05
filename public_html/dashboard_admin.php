@@ -1,3 +1,7 @@
+<?php
+include_once("./database/constants.php");
+
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,8 +28,8 @@
               <h5 class="card-title">Profile Info</h5>
               <p class="card-text"><i class="fa fa-user"></i>&nbsp;Satay Sedap</p>
               <p class="card-text"><i class="fa fa-user"></i>&nbsp;Admin</p>
-              <p class="card-text">Last Login : xxxxxx</p>
-              <a href="#" class="btn btn-primary"><i class="fa fa-edit"> &nbsp; </i>Edit Profile</a>
+              <!--<p class="card-text">Last Login : xxxxxx</p> -->
+              <a href="#" class="btn btn-primary"><i class="fa fa-edit"> &nbsp; </i>View Profile</a>
             </div>
           </div>
             </div>
@@ -42,9 +46,9 @@
                   <div class="col-sm-6">
                     <div class="card">
                       <div class="card-body">
-                        <h5 class="card-title">New Orders</h5>
-                        <p class="card-text">Record customers order and create new orders</p>
-                        <a href="#" class="btn btn-primary">New Orders</a>
+                        <h5 class="card-title">Manage Staff Account</h5>
+                        <p class="card-text">Add or Remove Staff's Account</p>
+                        <a href="#" class="btn btn-primary">Manage</a>
                       </div>
                     </div>
                   </div>
@@ -58,62 +62,7 @@
     </div>
 <p></p>
 <p></p>
-    <div class="container">
-      <div class="row">
 
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Categories</h5>
-              <p class="card-text">Manage or add item's category</p>
-              <a href="#" data-toggle="modal" data-target="#form_category" class="btn btn-primary">Add</a>
-              <a href="#" class="btn btn-primary">Manage</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Brands</h5>
-              <p class="card-text">Manage or add brands</p>
-              <a href="#" data-toggle="modal" data-target="#form_brand" class="btn btn-primary">Add</a>
-              <a href="#" class="btn btn-primary">Manage</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Products</h5>
-              <p class="card-text">Manage or add product</p>
-              <a href="#" data-toggle="modal" data-target="#form_products" class="btn btn-primary">Add</a>
-              <a href="#" class="btn btn-primary">Manage</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-
-    <?php
-      //Category Form
-        include_once("./templates/category.php");
-     ?>
-
-
-     <?php
-       //Brand Form
-         include_once("./templates/brand.php");
-      ?>
-
-
-      <?php
-        //Product Form
-          include_once("./templates/products.php");
-       ?>
 
 
   </body>

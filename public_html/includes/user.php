@@ -75,6 +75,8 @@ $result = $pre_stmt->get_result();
       $_SESSION["userid"] = $row["id"];
       $_SESSION["username"] = $row["username"];
       $_SESSION["last_login"] = $row["last_login"];
+      $_SESSION["usertype"] = $row["usertype"];
+
 
       //Ni untuk update user last login time
       $last_login = date("Y-m-d h:m:s");
@@ -87,6 +89,7 @@ $result = $pre_stmt->get_result();
       else{
         return 0;
       }
+
     }
     else{
       return "PASSWORD_NOT_MATCHED";

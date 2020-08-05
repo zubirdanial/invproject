@@ -8,9 +8,18 @@
       <li class="nav-item active">
         <a class="nav-link" href="#"><i class="fa fa-home">&nbsp;</i>Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#"><i class="fa fa-user">&nbsp;</i>Logout</a>
-      </li>
+
+
+        <?php
+          if (isset($_SESSION["userid"])){
+            ?>
+            <li class="nav-item active">
+            <a class="nav-link" href="logout.php"><i class="fa fa-user">&nbsp;</i>Logout</a>
+            </li>
+            <?php
+          }
+
+         ?>
     </ul>
   </div>
 </nav>

@@ -9,9 +9,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./includes/style.css">
     <script type="text/javascript" src="./js/main.js"></script>
   </head>
   <body>
+    <div class="overlay"><div class="loader"></div></div>
     <!-- Navabr -->
 <?php include_once("./templates/header.php"); ?>
   <br><br>
@@ -49,8 +51,8 @@
   		            <label for="usertype">Usertype</label>
   		            <select name="usertype" class="form-control" id="usertype">
   		              <option value="">Choose User Type</option>
+  		              <option value="Staff">Staff</option>
   		              <option value="Admin">Admin</option>
-  		              <option value="Other">Other</option>
   		            </select>
   		            <small id="t_error" class="form-text text-muted"></small>
   		          </div>

@@ -9,11 +9,30 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+
+        <form id="form_category" onsubmit="return false">
+          <div class="form-group">
+              <label>Category Name</label>
+              <input type="text" class="form-control" name="category_name" id="category_name" aria-describedby="emailHelp">
+              <small id="cat_error" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Parent Cateogry</label>
+              <select id="parent_cat" name="parent_cat" class="form-control">
+
+
+                
+              </select>
+              <small id="cat_error" class="form-text text-muted"></small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
       </div>
     </div>
   </div>
