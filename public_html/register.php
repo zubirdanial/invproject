@@ -15,7 +15,15 @@
   <body>
     <div class="overlay"><div class="loader"></div></div>
     <!-- Navabr -->
-<?php include_once("./templates/header.php"); ?>
+<?php //include_once("./templates/header.php"); ?>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Inventory System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  </nav>
+
   <br><br>
     <div class="container">
       <div class="card mx-auto" style="width: 30rem;">
@@ -24,7 +32,7 @@
   		        <form id="register_form" onsubmit="return false" autocomplete="off">
 
   		          <div class="form-group">
-  		            <label for="username">Full Name</label>
+  		            <label for="username">Username</label>
   		            <input type="text" name="username" class="form-control" id="username" placeholder="Enter Username">
   		            <small id="u_error" class="form-text text-muted"></small>
   		          </div>

@@ -13,8 +13,7 @@
     <script type="text/javascript" rel="stylesheet" src="./js/main.js"></script>
   </head>
   <body>
-    <?php include_once("./templates/header.php"); ?>
-
+    <?php include_once("./templates/header_admin.php"); ?>
 
     <?php
     include_once("./database/constants.php");
@@ -94,7 +93,7 @@
       echo "</td>";*/
 
 			echo "<td>";
-				echo "<form action='updateUserForm.php' method='POST'>";
+				echo "<form action='updateUserForm_admin.php' method='POST'>";
 				echo "<input type='hidden' value='$username' name='usernameToUpdate'>";
 				echo "<input class='btn btn-warning btn-block' type='submit' name='updateUserButton' value='Edit Profile'>";
 				echo "</form>";

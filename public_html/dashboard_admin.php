@@ -17,7 +17,7 @@ include_once("./database/constants.php");
   </head>
   <body>
     <!-- Navabr -->
-<?php include_once("./templates/header.php"); ?>
+<?php include_once("./templates/header_admin.php"); ?>
   <br><br>
     <div class="container">
       <div class="row">
@@ -29,7 +29,7 @@ include_once("./database/constants.php");
               <p class="card-text"><i class="fa fa-user"></i>&nbsp;Satay Sedap</p>
               <p class="card-text"><i class="fa fa-user"></i>&nbsp;Admin</p>
               <!--<p class="card-text">Last Login : xxxxxx</p> -->
-              <a href="#" class="btn btn-primary"><i class="fa fa-edit"> &nbsp; </i>View Profile</a>
+              <a href="profilePage_Admin.php" class="btn btn-primary"><i class="fa fa-edit"> &nbsp; </i>View Profile</a>
             </div>
           </div>
             </div>

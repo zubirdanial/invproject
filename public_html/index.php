@@ -1,7 +1,11 @@
 <?php
 include_once("./database/constants.php");
-if (isset($_SESSION["userid"])) {
+if (isset($_SESSION["userid"]) AND $_SESSION["usertype"] == "Staff") {
   header("location:".DOMAIN."/dashboard_staff.php");
+}
+
+else if (isset($_SESSION["userid"]) AND $_SESSION["usertype"] == "Admin") {
+  header("location:".DOMAIN."/dashboard_admin.php");
 }
 
  ?>
@@ -20,9 +24,16 @@ if (isset($_SESSION["userid"])) {
     <script type="text/javascript" rel="stylesheet" src="./js/main.js"></script>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Inventory System</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      </nav>
+
     <div class="overlay"><div class="loader"></div></div>
     <!-- Navabr -->
-<?php include_once("./templates/header.php"); ?>
+<?php //include_once("./templates/header.php"); ?>
   <br/><br/>
     <div class="container">
       <?php
@@ -40,7 +51,7 @@ if (isset($_SESSION["userid"])) {
         <div class="card mx-auto" style="width: 18rem;">
           <img src="./images/login.png" style="width:60%;" class="card-img-top mx-auto" alt="Login Icon">
           <div class="card-body">
-          <form id="form_login" onsubmit="return false">
+          <form id="form_login" onsubmit="return false" >
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input type="email" class="form-control" name="log_email" id="log_email">
@@ -54,7 +65,7 @@ if (isset($_SESSION["userid"])) {
 
             <div class="form-group">
               <label for="usertype">Usertype</label>
-              <select name="usertype" class="form-control" id="usertype">
+              <select name="log_usertype" class="form-control" id="log_usertype">
                 <option value="">Choose User Type</option>
                 <option value="Staff">Staff</option>
                 <option value="Admin">Admin</option>
@@ -62,12 +73,13 @@ if (isset($_SESSION["userid"])) {
               <small id="t_error" class="form-text text-muted"></small>
             </div>
 
-            <button type="submit" class="btn btn-primary"><i class="fa fa-lock">&nbsp;</i>Login</button>
+
+            <button type="submit" name="loginSubmit" class="btn btn-primary"><i class="fa fa-lock">&nbsp;</i>Login</button>
             <span> <a href="register.php"> Register </a> </span>
           </form>
 
           </div>
-          <div class="card-footer"> <a href="#"> Forget Password </a> </div>
+          <div class="card-footer"> <a href="forgetPassword.php"> Forget Password </a> </div>
         </div>
 
     </div>
@@ -76,3 +88,89 @@ if (isset($_SESSION["userid"])) {
 
   </body>
 </html>
+
+<?php/*
+//session_start();
+function validatePassword($email, $password)
+{
+    $con = mysqli_connect('localhost', 'root', '', 'project_inv');
+
+    if (mysqli_connect_errno())
+    {
+        die("FAIL TO CONNECT: " . mysqli_connect_error());
+    }
+
+    $sql = "SELECT * FROM user WHERE email = '".$email."' and password = '".$password."' ";
+    echo $sql;
+    $result = mysqli_query($con, $sql);
+    $count = mysqli_num_rows($result);
+
+    if ($count == 1)
+    {
+        return true;
+
+    }
+
+    else
+    {
+        return false;
+
+    }
+}
+
+
+function getUserType($email)
+{
+    $con = mysqli_connect('localhost', 'root', '', 'project_inv');
+
+    if (mysqli_connect_errno())
+    {
+        die("FAIL TO CONNECT: " . mysqli_connect_error());
+    }
+    $sql = "SELECT * FROM user WHERE email = '".$email."' ";
+    echo $sql;
+    $result = mysqli_query($con, $sql);
+    $count = mysqli_num_rows($result);
+
+    if ($count == 1)
+    {
+        $row = mysqli_fetch_assoc($result);
+        $userType = $row['usertype'];
+        return $userType;
+    }
+
+}
+
+if(isSet($_POST["loginSubmit"])){
+$_SESSION['log_email']=$_POST['log_email'];
+$_SESSION['log_password']=$_POST['log_password'];
+
+
+$email = $_POST['log_email'];
+$password = $_POST['log_password'];
+
+
+$isValidUser = validatePassword($email,$password);
+
+if ($isValidUser)
+{
+  $userType = getUserType($email);
+
+  if ($userType == 'Staff')
+      header ("location:dashboard_staff.php");
+
+  else if ($userType == 'Admin')
+    header ("location:dashboard_admin.php");
+}
+
+else
+{
+  //echo 'Wrong credentials!';
+}
+
+
+
+
+}
+ */
+ ?>

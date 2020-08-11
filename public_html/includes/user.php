@@ -59,9 +59,9 @@ class User
     //$pre_stmt = $this->prepare("");
   }
 
-  public function userLogin($email,$password){
+  public function userLogin($email,$password,$usertype){
 
-$pre_stmt = $this->con->prepare("SELECT id,username,password,last_login FROM user where email = ?");
+$pre_stmt = $this->con->prepare("SELECT id,username,password,last_login,usertype FROM user where email = ?");
 $pre_stmt->bind_param("s",$email);
 $pre_stmt->execute() or die($this->con->error);
 $result = $pre_stmt->get_result();
@@ -77,9 +77,13 @@ $result = $pre_stmt->get_result();
       $_SESSION["last_login"] = $row["last_login"];
       $_SESSION["usertype"] = $row["usertype"];
 
+      if($usertype != $_SESSION["usertype"]){
+        return "USERTYPE_NOT_MATCHED";
+      }
+
 
       //Ni untuk update user last login time
-      $last_login = date("Y-m-d h:m:s");
+      $last_login = date("Y-m-d");
       $pre_stmt = $this->con->prepare("UPDATE user SET last_login = ? WHERE email = ?");
       $pre_stmt->bind_param("ss",$last_login,$email);
       $result = $pre_stmt->execute() or die ($this->con->error);

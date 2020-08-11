@@ -97,7 +97,7 @@ $(document).ready(function(){
   $("#form_login").on("submit",function(){
     var email = $("#log_email");
     var pass = $("#log_password");
-    var userType = $("#usertype")
+    var usertype = $("#log_usertype");
     var status = false;
 
     if (email.val() == "") {
@@ -120,7 +120,17 @@ $(document).ready(function(){
       status = true;
     }
 
-if(userType.val()=="Staff"){
+    if (usertype.val() == "") {
+      usertype.addClass("border-danger");
+      $("#t_error").html("<span class='text-danger'>Please enter usertype</span>");
+      status = false;
+    }else {
+      usertype.removeClass("border-danger");
+      $("#t_error").html("");
+      status = true;
+    }
+
+if(usertype.val()=="Staff"){
     if(status){
     $(".overlay").show();
       $.ajax({
@@ -138,7 +148,13 @@ if(userType.val()=="Staff"){
             pass.addClass("border-danger");
             $("#p_error").html("<span class='text-danger'>Please enter correct password</span>");
             status = false;
-          }else {
+          }else if (data == "USERTYPE_NOT_MATCHED") {
+            $(".overlay").hide();
+            usertype.addClass("border-danger");
+            $("#t_error").html("<span class='text-danger'>Please enter correct usertype</span>");
+            status = false;
+          }
+          else {
             $(".overlay").hide();
             console.log(data);
           window.location.href = DOMAIN+"/dashboard_staff.php";
@@ -147,7 +163,7 @@ if(userType.val()=="Staff"){
       })
     }}
 
-    else if (userType.val()=="Admin") {
+    else if (usertype.val()=="Admin") {
       if(status){
       $(".overlay").show();
         $.ajax({
@@ -164,6 +180,11 @@ if(userType.val()=="Staff"){
               $(".overlay").hide();
               pass.addClass("border-danger");
               $("#p_error").html("<span class='text-danger'>Please enter correct password</span>");
+              status = false;
+            }else if (data == "USERTYPE_NOT_MATCHED") {
+              $(".overlay").hide();
+              usertype.addClass("border-danger");
+              $("#t_error").html("<span class='text-danger'>Please enter correct usertype</span>");
               status = false;
             }else {
               $(".overlay").hide();

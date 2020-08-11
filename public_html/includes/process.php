@@ -14,9 +14,9 @@ if (isset($_POST["username"]) AND isset($_POST["email"])) {
 
 //UNTUK LOGIN PUNYA process
 
-if (isset($_POST["log_email"]) AND isset($_POST["log_password"])) {
+if (isset($_POST["log_email"]) AND isset($_POST["log_password"]) AND isset($_POST["log_usertype"])) {
   $user = new User();
-  $result = $user->userLogin($_POST["log_email"],$_POST["log_password"]);
+  $result = $user->userLogin($_POST["log_email"],$_POST["log_password"],$_POST["log_usertype"]);
   echo $result;
   exit();
 }

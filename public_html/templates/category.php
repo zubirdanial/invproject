@@ -21,7 +21,7 @@
               <select id="parent_cat" name="parent_cat" class="form-control">
 
 
-                
+
               </select>
               <small id="cat_error" class="form-text text-muted"></small>
             </div>
