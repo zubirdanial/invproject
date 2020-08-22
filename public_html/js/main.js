@@ -57,7 +57,7 @@ $(document).ready(function(){
 
     if(type.val() == ""){
       type.addClass("border-danger");
-      $("#t_error").html("<span class='text-danger'>Please enter password and more than 8 characters</span>");
+      $("#t_error").html("<span class='text-danger'>Please enter usertype</span>");
       status = false;
     }
     else{
@@ -213,5 +213,59 @@ function fetch_category(){
 
   })
 }
+
+
+  //Add category_form
+
+  $("#category_form").on("submit", function(){
+    if($("#category_name").val()==""){
+      $("#category_name").addClass("border-danger");
+      $("#cat_error").html("<span class='text-danger'>Please enter category name</span>");
+    }
+    else {
+      $.ajax({
+        url : DOMAIN+"/includes/process.php",
+        method : "POST",
+        data : $("#category_form").serialize(),
+        success : function(data){
+            if (data == "CATEGORY_ADDED"){
+              $("#category_name").removeClass("border-danger");
+              $("#cat_error").html("<span class='text-success'>New Category Added</span>");
+              $("#category_name").val("");
+            }
+            else{
+              alert(data);
+            }
+        }
+      })
+    }
+  })
+
+
+  //Add Brand
+  $("#brand_form").on("submit",function(){
+    if($("#brand_name").val() == ""){
+      $("#brand_name").addClass("border-danger");
+      $("#brand_error").html("<span class='text-danger'> Please enter brand name </span>");
+    }
+    else {
+      $.ajax({
+        url : DOMAIN+"/includes/process.php",
+        method : "POST",
+        data : $("#brand_form").serialize(),
+        success : function (data){
+
+          if(data == "BRAND_ADDED"){
+          $("#brand_name").removeClass("border-danger");
+          $("#brand_error").html("<span class='text-success'> New Brand Added </span>");
+          $("#brand_name").val("");
+        }
+        else {
+          alert(data);
+        }
+        }
+      })
+    }
+  })
 
 })

@@ -45,7 +45,7 @@
             <div class="form-group">
               <label for="exampleInputEmail1">Username</label>
               <input type="text" class="form-control" name="log_username" id="log_username">
-              <small id="e_error" class="form-text text-muted"></small>
+              <small id="e_error" class="form-text text-muted">Please enter the username correctly</small>
             </div>
 
             <div class="form-group">
@@ -74,6 +74,21 @@
 <?php
 include_once("./database/constants.php");
 
+function getInfo(){
+  $con = mysqli_connect("localhost", "root", "", "project_inv");
+  if(mysqli_connect_errno()){
+    die("Failed to connect to MySQL: " .mysqli_connect_error());
+  }
+
+
+  $sqlStr = " select username,email,usertype,register_date,last_login,image from user where email = '".$_POST["log_email"]."' ";
+  //echo $sqlStr;
+
+  $qry = mysqli_query($con, $sqlStr);
+  mysqli_close($con);
+  return $qry;
+}
+
 if(isSet($_POST["updatePassword"])){
   		updatePassword();
   	}
@@ -94,13 +109,23 @@ function updatePassword(){
   $username = $_POST["log_username"];
   $email = $_POST["log_email"];
   $change_password = $_POST["log_password"];
+
+  $getInfo = getInfo();
+  $row = mysqli_fetch_assoc($getInfo);
+
+if ($username != $row["username"] || $email != $row["email"])
+{
+  echo '<script>alert("Invalid username or email")</script>';
+}
+
+else{
   $pass_hash = password_hash($change_password,PASSWORD_BCRYPT,["cost"=>8]);
 
   $sqlStr = "UPDATE user SET password = '" .$pass_hash. "' WHERE username = '" .$username. "' AND email = '".$email."'";
 
   //echo $sqlStr;
   mysqli_query($con, $sqlStr);
-
+}
 
 }
 
