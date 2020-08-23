@@ -207,13 +207,29 @@ function fetch_category(){
     method : "POST",
     data : {getCategory:1},
     success : function(data){
-      var root = "<option value='0'>Root</option>"
+      var root = "<option value='0'>Root</option>";
+      var choose = "<option value=''>Choose Category</option>"
       $("#parent_cat").html(root+data);
+      $("#select_cat").html(choose+data);
     }
 
   })
 }
 
+//fetch Brand
+fetch_brand();
+function fetch_brand(){
+  $.ajax({
+    url : DOMAIN+"/includes/process.php",
+    method : "POST",
+    data : {getBrand:1},
+    success : function(data){
+      var choose = "<option value=''>Choose Brand</option>"
+      $("#select_brand").html(choose+data);
+    }
+
+  })
+}
 
   //Add category_form
 
@@ -268,4 +284,22 @@ function fetch_category(){
     }
   })
 
+  //ADD Product
+  $("#product_form").on("submit",function(){
+    $.ajax({
+      url : DOMAIN+"/includes/process.php",
+      method : "POST",
+      data : $("#product_form").serialize(),
+      success : function (data){
+
+        if(data == "PRODUCT_ADDED"){
+        alert(data);
+      }
+      else {
+        console.log(data);
+        alert(data);
+      }
+      }
+    })
+  })
 })
