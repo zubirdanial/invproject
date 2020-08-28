@@ -71,7 +71,7 @@ include_once("./database/constants.php");
               <h5 class="card-title">Categories</h5>
               <p class="card-text">Manage or add item's category</p>
               <a href="#" data-toggle="modal" data-target="#form_category" class="btn btn-primary">Add</a>
-              <a href="#" class="btn btn-primary">Manage</a>
+              <a href="manage_categories.php" class="btn btn-primary">Manage</a>
             </div>
           </div>
         </div>

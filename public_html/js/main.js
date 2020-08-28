@@ -248,6 +248,7 @@ function fetch_brand(){
               $("#category_name").removeClass("border-danger");
               $("#cat_error").html("<span class='text-success'>New Category Added</span>");
               $("#category_name").val("");
+              fetch_category();
             }
             else{
               alert(data);
@@ -275,6 +276,7 @@ function fetch_brand(){
           $("#brand_name").removeClass("border-danger");
           $("#brand_error").html("<span class='text-success'> New Brand Added </span>");
           $("#brand_name").val("");
+          fetch_brand();
         }
         else {
           alert(data);
@@ -292,8 +294,13 @@ function fetch_brand(){
       data : $("#product_form").serialize(),
       success : function (data){
 
-        if(data == "PRODUCT_ADDED"){
-        alert(data);
+        if(data == "NEW_PRODUCT_ADDED"){
+        alert("New Product Added");
+        $("#product_name").val("");
+        $("#select_cat").val("");
+        $("#select_brand").val("");
+        $("#product_price").val("");
+        $("#product_qty").val("");
       }
       else {
         console.log(data);
@@ -302,4 +309,18 @@ function fetch_brand(){
       }
     })
   })
+
+  //Manage Category
+  manageCategory();
+  function manageCategory(){
+    $.ajax({
+      url : DOMAIN+"/includes/process.php",
+      method : "POST",
+      data : {manageCategory:1},
+      success : function (data){
+          $("#get_category").html(data);
+          alert(data);
+      }
+    })
+  }
 })

@@ -2,7 +2,7 @@
 include_once("../database/constants.php");
 include_once("user.php");
 include_once("DBOperation.php");
-
+include_once("manage.php");
 //UNTUK REGISTER PUNYA PROCESS
 if (isset($_POST["username"]) AND isset($_POST["email"])) {
   $user = new User();
@@ -72,5 +72,39 @@ if (isset($_POST['added_date']) AND isset($_POST["product_name"])) {
                             $_POST["added_date"]);
   echo $result;
   exit();
+}
+
+
+//manage category
+if (isset($_POST["manageCategory"])){
+  $m = new Manage();
+  $result = $m-> manageRecordWithPagination("categories");
+  $rows = $result["rows"];
+  //$pagination = $result["pagination"];
+  if (count($rows) > 0 ) {
+    $n = 0;
+    foreach ($rows as $row){
+      ?>
+      <tr>
+          <td><?php echo ++$n; ?></td>
+          <td><?php echo $row["category"]; ?></td>
+          <td><?php echo $row["parent"]; ?></td>
+          <td>
+            <a href="#" class="btn btn-success btn-sm">Active</a>
+          </td>
+          <td>
+            <a href="#" class="btn btn-danger btn-sm">Delete</a>
+            <a href="#" class="btn btn-info btn-sm">Update</a>
+          </td>
+      </tr>
+      <?php
+    }
+    ?>
+      <!--<tr>
+        <td colspan="5"> <?php echo $pagination; ?></td>
+      </tr>-->
+    <?php
+    exit();
+  }
 }
 ?>
