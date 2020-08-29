@@ -82,6 +82,7 @@ if (isset($_POST["manageCategory"])){
   $rows = $result["rows"];
   //$pagination = $result["pagination"];
   if (count($rows) > 0 ) {
+    //sepatutnya kat bawah ni ada pagination tapi tak jadi
     $n = 0;
     foreach ($rows as $row){
       ?>
@@ -93,18 +94,25 @@ if (isset($_POST["manageCategory"])){
             <a href="#" class="btn btn-success btn-sm">Active</a>
           </td>
           <td>
-            <a href="#" class="btn btn-danger btn-sm">Delete</a>
-            <a href="#" class="btn btn-info btn-sm">Update</a>
+            <a href="#" did="<?php echo $row['cid']; ?>" class="btn btn-danger btn-sm del_cat">Delete</a>
+            <a href="#" eid="<?php echo $row['cid']; ?>"class="btn btn-info btn-sm edit_cat">Update</a>
           </td>
       </tr>
       <?php
     }
     ?>
       <!--<tr>
-        <td colspan="5"> <?php echo $pagination; ?></td>
+        <td colspan="5"> <?php //echo $pagination; ?></td>
       </tr>-->
     <?php
     exit();
   }
+}
+
+
+if (isset($_POST["deleteCategory"])) {
+  $m = new Manage();
+  $result = $m ->deleteRecord("categories","cid",$_POST["id"]);
+  echo $result;
 }
 ?>
