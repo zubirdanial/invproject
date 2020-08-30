@@ -19,6 +19,8 @@ class Manage
       //$a = $this->pagination($this -> con,$table,$pno,5);
       if ($table == "categories") {
         $sql ="SELECT p.category_name as category, c.category_name as parent,p.cid, p.status FROM categories p LEFT JOIN categories c ON p.parent_cat = c.cid ";
+      }else {
+        $sql ="SELECT * FROM ".$table." ";
       }
       $result = $this->con->query($sql) or die($this->con->error);
       $rows = array();
@@ -95,7 +97,7 @@ class Manage
 
 
     }else {
-      $this->con->prepare("DELETE FROM ".$table." WHERE ".$pk." = ?");
+      $pre_stmt = $this->con->prepare("DELETE FROM ".$table." WHERE ".$pk." = ?");
       $pre_stmt ->bind_param("i",$id);
       $result = $pre_stmt->execute() or die($this->con->error);
       if ($result) {
@@ -136,7 +138,7 @@ class Manage
   }
 
 
-  
+
 }
 
 //$obj = new Manage();

@@ -135,4 +135,65 @@ if (isset($_POST["update_category"])) {
 
   exit();
 }
+
+
+// ----------------------------------- BRAND ------------
+//manage brand
+if (isset($_POST["manageBrand"])){
+  $m = new Manage();
+  $result = $m-> manageRecordWithPagination("brands");
+  $rows = $result["rows"];
+  //$pagination = $result["pagination"];
+  if (count($rows) > 0 ) {
+    //sepatutnya kat bawah ni ada pagination tapi tak jadi
+    $n = 0;
+    foreach ($rows as $row){
+      ?>
+      <tr>
+          <td><?php echo ++$n; ?></td>
+          <td><?php echo $row["brand_name"]; ?></td>
+          <td>
+            <a href="#" class="btn btn-success btn-sm">Active</a>
+          </td>
+          <td>
+            <a href="#" did="<?php echo $row['bid']; ?>" class="btn btn-danger btn-sm del_brand">Delete</a>
+            <a href="#" eid="<?php echo $row['bid']; ?>"class="btn btn-info btn-sm edit_brand" data-toggle="modal" data-target="#form_brand">Update</a>
+          </td>
+      </tr>
+      <?php
+    }
+    ?>
+      <!--<tr>
+        <td colspan="5"> <?php //echo $pagination; ?></td>
+      </tr>-->
+    <?php
+    exit();
+  }
+}
+
+//delete brand
+if (isset($_POST["deleteBrand"])) {
+  $m = new Manage();
+  $result = $m ->deleteRecord("brands","bid",$_POST["id"]);
+  echo $result;
+}
+
+//update brand
+if (isset($_POST["updateBrand"])) {
+  $m = new Manage();
+  $result = $m->getSingleRecord("brands","bid",$_POST["id"]);
+  echo json_encode($result);
+  exit();
+}
+
+//update brand after gettign data
+if (isset($_POST["update_brand"])) {
+  $m = new Manage();
+  $id = $_POST["bid"];
+  $name = $_POST["update_brand"];
+  $result = $m->update_record("brands",["bid"=>$id],["brand_name"=>$name,"status"=>1]);
+  echo $result;
+
+  exit();
+}
 ?>

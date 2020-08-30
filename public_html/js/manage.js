@@ -95,4 +95,73 @@ $(document).ready(function(){
     }
   })
 
+
+  //Manage BRAND
+  manageBrand();
+  function manageBrand(){
+    $.ajax({
+      url : DOMAIN+"/includes/process.php",
+      method : "POST",
+      data : {manageBrand:1},
+      success : function (data){
+          $("#get_brand").html(data);
+      }
+    })
+  }
+
+  $("body").delegate(".del_brand","click",function(){
+    var did = $(this).attr("did");
+    if (confirm("ARE YOU SURE YOU WANT TO DELETE ?")) {
+      $.ajax({
+          url : DOMAIN+"/includes/process.php",
+          method : "POST",
+          data : {deleteBrand:1,id:did},
+          success : function (data){
+            if(data == "DELETED"){
+              alert("BRAND DELETED");
+              manageBrand(1);
+            }else {
+              alert(data);
+            }
+
+          }
+        })
+    }
+  })
+
+//update brand
+  $("body").delegate(".edit_brand","click",function(){
+    var eid = $(this).attr("eid");
+    $.ajax({
+      url : DOMAIN+"/includes/process.php",
+      method : "POST",
+      dataType : "json",
+      data : {updateBrand:1,id:eid},
+      success : function(data){
+        console.log(data);
+        $("#bid").val(data["bid"]);
+        $("#update_brand").val(data["brand_name"]);
+      }
+    })
+  })
+
+
+  $("#update_brand_form").on("submit",function(){
+    if($("#update_brand").val()==""){
+      $("#update_brand").addClass("border-danger");
+      $("#brand_error").html("<span class='text-danger'>Please enter brand name</span>");
+    }
+    else {
+      $.ajax({
+        url : DOMAIN+"/includes/process.php",
+        method : "POST",
+        data : $("#update_brand_form").serialize(),
+        success : function(data){
+            window.location.href = "";
+        }
+      })
+    }
+  })
+
+
 })
