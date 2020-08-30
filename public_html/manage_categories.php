@@ -51,6 +51,8 @@ include_once("./database/constants.php");
         </table>
     </div>
 
-
+    <?php
+        include_once("./templates/update_category.php");
+     ?>
   </body>
 </html>

@@ -44,4 +44,55 @@ $(document).ready(function(){
 
     }
   })
+
+  //fetch category_name
+  fetch_category();
+  function fetch_category(){
+    $.ajax({
+      url : DOMAIN+"/includes/process.php",
+      method : "POST",
+      data : {getCategory:1},
+      success : function(data){
+        var root = "<option value='0'>Root</option>";
+        $("#parent_cat").html(root+data);
+      }
+
+    })
+  }
+
+
+  //update category
+  $("body").delegate(".edit_cat","click",function(){
+    var eid = $(this).attr("eid");
+    $.ajax({
+      url : DOMAIN+"/includes/process.php",
+      method : "POST",
+      dataType : "json",
+      data : {updateCategory:1,id:eid},
+      success : function(data){
+        console.log(data);
+        $("#cid").val(data["cid"]);
+        $("#update_category").val(data["category_name"]);
+        $("#parent_cat").val(data["parent_cat"]);
+      }
+    })
+  })
+
+  $("#update_category_form").on("submit",function(){
+    if($("#update_category").val()==""){
+      $("#update_category").addClass("border-danger");
+      $("#cat_error").html("<span class='text-danger'>Please enter category name</span>");
+    }
+    else {
+      $.ajax({
+        url : DOMAIN+"/includes/process.php",
+        method : "POST",
+        data : $("#update_category_form").serialize(),
+        success : function(data){
+            window.location.href = "";
+        }
+      })
+    }
+  })
+
 })
