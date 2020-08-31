@@ -19,6 +19,8 @@ class Manage
       //$a = $this->pagination($this -> con,$table,$pno,5);
       if ($table == "categories") {
         $sql ="SELECT p.category_name as category, c.category_name as parent,p.cid, p.status FROM categories p LEFT JOIN categories c ON p.parent_cat = c.cid ";
+      }else if ($table == "products") {
+        $sql = "SELECT p.pid,p.product_name,c.category_name,b.brand_name,p.product_price,p.product_stock,p.added_date,p.p_status FROM products p, brands b, categories c WHERE p.bid = b.bid AND p.cid = c.cid";
       }else {
         $sql ="SELECT * FROM ".$table." ";
       }

@@ -54,7 +54,24 @@ $(document).ready(function(){
       data : {getCategory:1},
       success : function(data){
         var root = "<option value='0'>Root</option>";
+        var choose = "<option value=''>Chose Category</option>";
         $("#parent_cat").html(root+data);
+        $("#select_cat").html(choose+data);
+      }
+
+    })
+  }
+
+  //fetch Brand
+  fetch_brand();
+  function fetch_brand(){
+    $.ajax({
+      url : DOMAIN+"/includes/process.php",
+      method : "POST",
+      data : {getBrand:1},
+      success : function(data){
+        var choose = "<option value=''>Choose Brand</option>"
+        $("#select_brand").html(choose+data);
       }
 
     })
@@ -163,5 +180,76 @@ $(document).ready(function(){
     }
   })
 
+////////////////////////////////////PRODUCTS///////////////////////////
+
+manageProduct();
+function manageProduct(){
+  $.ajax({
+    url : DOMAIN+"/includes/process.php",
+    method : "POST",
+    data : {manageProduct:1},
+    success : function (data){
+        $("#get_product").html(data);
+    }
+  })
+}
+
+$("body").delegate(".del_product","click",function(){
+  var did = $(this).attr("did");
+  if (confirm("ARE YOU SURE YOU WANT TO DELETE ?")) {
+    $.ajax({
+        url : DOMAIN+"/includes/process.php",
+        method : "POST",
+        data : {deleteProduct:1,id:did},
+        success : function (data){
+          if(data == "DELETED"){
+            alert("PRODUCT DELETED");
+            manageProduct(1);
+          }else {
+            alert(data);
+          }
+
+        }
+      })
+  }
+})
+
+//update product
+  $("body").delegate(".edit_product","click",function(){
+    var eid = $(this).attr("eid");
+    $.ajax({
+      url : DOMAIN+"/includes/process.php",
+      method : "POST",
+      dataType : "json",
+      data : {updateProduct:1,id:eid},
+      success : function(data){
+        console.log(data);
+        $("#pid").val(data["pid"]);
+        $("#update_product").val(data["product_name"]);
+        $("#select_cat").val(data["cid"]);
+        $("#select_brand").val(data["bid"]);
+        $("#product_price").val(data["product_price"]);
+        $("#product_qty").val(data["product_stock"]);
+
+      }
+    })
+  })
+
+  $("#update_product_form").on("submit",function(){
+    $.ajax({
+      url : DOMAIN+"/includes/process.php",
+      method : "POST",
+      data : $("#update_product_form").serialize(),
+      success : function (data){
+          if(data == "UPDATED"){
+            alert("PRODUCT UPDATED");
+            window.location.href = "";
+          }
+          else {
+            alert(data);
+          }
+      }
+    })
+  })
 
 })

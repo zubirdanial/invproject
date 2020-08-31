@@ -196,4 +196,76 @@ if (isset($_POST["update_brand"])) {
 
   exit();
 }
+
+//-----------------------Product--------------//
+//manage product
+if (isset($_POST["manageProduct"])){
+  $m = new Manage();
+  $result = $m-> manageRecordWithPagination("products");
+  $rows = $result["rows"];
+  //$pagination = $result["pagination"];
+  if (count($rows) > 0 ) {
+    //sepatutnya kat bawah ni ada pagination tapi tak jadi
+    $n = 0;
+    foreach ($rows as $row){
+      ?>
+      <tr>
+          <td><?php echo ++$n; ?></td>
+          <td><?php echo $row["product_name"]; ?></td>
+          <td><?php echo $row["category_name"]; ?></td>
+          <td><?php echo $row["brand_name"]; ?></td>
+          <td><?php echo $row["product_price"]; ?></td>
+          <td><?php echo $row["product_stock"]; ?></td>
+          <td><?php echo $row["added_date"]; ?></td>
+
+          <td>
+            <a href="#" class="btn btn-success btn-sm">Active</a>
+          </td>
+          <td>
+            <a href="#" did="<?php echo $row['pid']; ?>" class="btn btn-danger btn-sm del_product">Delete</a>
+            <a href="#" eid="<?php echo $row['pid']; ?>"class="btn btn-info btn-sm edit_product" data-toggle="modal" data-target="#form_products">Update</a>
+          </td>
+      </tr>
+      <?php
+    }
+    ?>
+      <!--<tr>
+        <td colspan="5"> <?php //echo $pagination; ?></td>
+      </tr>-->
+    <?php
+    exit();
+  }
+}
+
+
+//delete product
+if (isset($_POST["deleteProduct"])) {
+  $m = new Manage();
+  $result = $m ->deleteRecord("products","pid",$_POST["id"]);
+  echo $result;
+}
+
+//update product
+if (isset($_POST["updateProduct"])) {
+  $m = new Manage();
+  $result = $m->getSingleRecord("products","pid",$_POST["id"]);
+  echo json_encode($result);
+  exit();
+}
+
+//update product after gettign data
+if (isset($_POST["update_product"])) {
+  $m = new Manage();
+  $id = $_POST["pid"];
+  $name = $_POST["update_product"];
+  $cat = $_POST["select_cat"];
+  $brand = $_POST["select_brand"];
+  $price = $_POST["product_price"];
+  $qty = $_POST["product_qty"];
+  $date = $_POST["added_date"];
+  $result = $m->update_record("products",["pid"=>$id],["cid"=>$cat,"bid"=>$brand,"product_name"=>$name,"product_price"=>$price,"product_stock"=>$qty,"added_date"=>$date]);
+  echo $result;
+
+  exit();
+}
 ?>

@@ -93,7 +93,7 @@ include_once("./database/constants.php");
               <h5 class="card-title">Products</h5>
               <p class="card-text">Manage or add product</p>
               <a href="#" data-toggle="modal" data-target="#form_products" class="btn btn-primary">Add</a>
-              <a href="#" class="btn btn-primary">Manage</a>
+              <a href="manage_product.php" class="btn btn-primary">Manage</a>
             </div>
           </div>
         </div>
