@@ -81,7 +81,7 @@ $(document).ready(function(){
               alert("Something went wrong");
             }else {
               $(".overlay").hide();
-              window.location.href = encodeURI(DOMAIN+"/index.php?msg=You are registered and may now login");
+              window.location.href = encodeURI(DOMAIN+"/dashboard_admin.php?msg=User is registered");
             }
           }
         })

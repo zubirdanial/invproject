@@ -8,7 +8,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="./dashboard_admin.php"><i class="fa fa-home">&nbsp;</i>Home <span class="sr-only">(current)</span></a>
       </li>
-
+      <li class="nav-item active">
+        <a class="nav-link" href="./register.php"><i class="fa fa-user-plus">&nbsp;</i>Register <span class="sr-only">(current)</span></a>
+      </li>
 
         <?php
           if (isset($_SESSION["userid"])){

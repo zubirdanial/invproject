@@ -64,7 +64,7 @@ else if (isset($_SESSION["userid"]) AND $_SESSION["usertype"] == "Admin") {
             </div>
 
             <div class="form-group">
-              <label for="usertype">Usertype</label>
+              <label for="usertype">User Type</label>
               <select name="log_usertype" class="form-control" id="log_usertype">
                 <option value="">Choose User Type</option>
                 <option value="Staff">Staff</option>
@@ -75,7 +75,7 @@ else if (isset($_SESSION["userid"]) AND $_SESSION["usertype"] == "Admin") {
 
 
             <button type="submit" name="loginSubmit" class="btn btn-primary"><i class="fa fa-lock">&nbsp;</i>Login</button>
-            <span> <a href="register.php"> Register </a> </span>
+            <!-- <span> <a href="register.php"> Register </a> </span> -->
           </form>
 
           </div>

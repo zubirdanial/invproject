@@ -59,7 +59,7 @@
 
  ?>
  <div class="card mx-auto" style="width: 18rem;">
-  <center> <?php echo '<img src="data:image;base64,'.base64_encode($row['image']).'" alt="Image" style="width: 100px; height: 100px>"'; ?> </center>
+  <center> <?php echo '<img src="data:image;base64,'.base64_encode($row['image']).'" alt="Image" style="width: 150px; height: 150px>"'; ?> </center>
    <div class="card-body">
     <center> <p class="card-text">Profile Picture</p> </center>
    </div>

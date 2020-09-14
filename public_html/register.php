@@ -22,6 +22,13 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="./dashboard_admin.php"><i class="fa fa-home">&nbsp;</i>Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
   </nav>
 
   <br><br>
@@ -56,7 +63,7 @@
   		          </div>
 
   		          <div class="form-group">
-  		            <label for="usertype">Usertype</label>
+  		            <label for="usertype">User Type</label>
   		            <select name="usertype" class="form-control" id="usertype">
   		              <option value="">Choose User Type</option>
   		              <option value="Staff">Staff</option>

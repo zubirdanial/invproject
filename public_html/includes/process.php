@@ -268,4 +268,44 @@ if (isset($_POST["update_product"])) {
 
   exit();
 }
+
+///////////////////order processing
+
+if(isSet($_POST["getNewOrderItem"])){
+  $obj = new DBOperation();
+  $rows = $obj->getAllRecord("products");
+  ?>
+      <tr>
+            <td><b id="number">1</b></td>
+            <td>
+                <select name="pid[]" class="form-control form-control-sm pid" required>
+                  <option value="">Choose Product</option>
+                  <?php
+                    foreach ($rows as $row) {
+                      ?> <option value="<?php echo $row['pid']; ?>"> <?php echo $row["product_name"];?></option> <?php
+                    }
+                    ?>
+                </select>
+            </td>
+            <td><input name="tqty[]" readonly type="text" class="form-control form-control-sm tqty"></td>
+            <td><input name="qty[]" type="text" class="form-control form-control-sm qty" required></td>
+            <td><input name="price[]" type="text" class="form-control form-control-sm price" readonly></td>
+            <td><input name="pro_name[]" type="hidden" class="form-control form-control-sm pro_name" ></td>
+            <td>RM <span class="amt">0</span> </td>
+        </tr>
+
+  <?php
+  exit();
+}
+
+
+
+//Get price and quantity of one Item
+
+if (isSet($_POST["getPriceAndQty"])){
+  $m = new Manage();
+  $result = $m -> getSingleRecord("products","pid",$_POST["id"]);
+  echo json_encode($result);
+  exit();
+}
 ?>

@@ -38,7 +38,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Product Price</label>
+            <label>Product Price (RM)</label>
             <input type="text" class="form-control" id="product_price" name="product_price" placeholder="Enter Price of Product" required/>
           </div>
           <div class="form-group">
