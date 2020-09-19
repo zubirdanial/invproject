@@ -276,7 +276,7 @@ if(isSet($_POST["getNewOrderItem"])){
   $rows = $obj->getAllRecord("products");
   ?>
       <tr>
-            <td><b id="number">1</b></td>
+            <td><b class="number">1</b></td>
             <td>
                 <select name="pid[]" class="form-control form-control-sm pid" required>
                   <option value="">Choose Product</option>
@@ -289,8 +289,8 @@ if(isSet($_POST["getNewOrderItem"])){
             </td>
             <td><input name="tqty[]" readonly type="text" class="form-control form-control-sm tqty"></td>
             <td><input name="qty[]" type="text" class="form-control form-control-sm qty" required></td>
-            <td><input name="price[]" type="text" class="form-control form-control-sm price" readonly></td>
-            <td><input name="pro_name[]" type="hidden" class="form-control form-control-sm pro_name" ></td>
+            <td><input name="price[]" type="text" class="form-control form-control-sm price" readonly></span>
+            <span><input name="pro_name[]" type="hidden" class="form-control form-control-sm pro_name" ></td>
             <td>RM <span class="amt">0</span> </td>
         </tr>
 

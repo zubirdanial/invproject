@@ -91,7 +91,7 @@ include_once("./database/constants.php");
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="gst" class="col-sm-3 col-form-label" align="right">GST (18%)</label>
+                      <label for="gst" class="col-sm-3 col-form-label" align="right">Tax (6%)</label>
                       <div class="col-sm-6">
                         <input type="text" readonly name="gst" class="form-control form-control-sm" id="gst" required/>
                       </div>
