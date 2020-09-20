@@ -29,18 +29,18 @@ include_once("./database/constants.php");
               <h4>New Orders</h4>
             </div>
             <div class="card-body">
-                  <form onsubmit="return false" >
+                  <form id="get_order_data" onsubmit="return false" >
                     <div class="form-group row" >
                       <label class="col-sm-3 col-form-label" align="right" >Order Date</label>
                       <div class="col-sm-6">
-                        <input type="text" readonly class="form-control form-control-sm" value="<?php echo date("Y-d-m"); ?>">
+                        <input type="text" id="order_date" name="order_date" readonly class="form-control form-control-sm" value="<?php echo date("Y-d-m"); ?>">
                       </div>
                     </div>
 
                     <div class="form-group row" >
                       <label class="col-sm-3" align="right" >Customer Name*</label>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-sm" placeholder="Enter customer name" required/>
+                        <input type="text" id="cust_name" name="cust_name" class="form-control form-control-sm" placeholder="Enter customer name" required/>
                       </div>
                     </div>
 

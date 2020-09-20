@@ -27,6 +27,7 @@ $(document).ready(function(){
 
     $("#remove").click(function(){
       $("#invoice_item").children("tr:last").remove();
+      calculate(0,0);
     })
 
     $("#invoice_item").delegate(".pid","change",function(){
@@ -103,5 +104,18 @@ $(document).ready(function(){
       var paid = $(this).val();
       var discount = $("#discount").val();
       calculate(discount,paid);
+    })
+
+    /* Order Accepting */
+
+    $("#order_form").click(function(){
+      $.ajax({
+        url : DOMAIN+"/includes/process.php",
+        method : "POST",
+        data : $("#get_order_data").serialize(),
+        success : function(data){
+          alert(data);
+        }
+      })
     })
 });
