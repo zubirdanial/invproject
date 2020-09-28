@@ -152,6 +152,19 @@ class Manage
 
       if($invoice_no != null){
           for ($i=0; $i < count($ar_price); $i++) {
+
+            //here were are finding the remaining quantity
+            $rem_qty = $ar_tqty[$i] - $ar_qty[$i];
+
+            if ($rem_qty < 0 ) {
+              return "ORDER_FAILED_TO_COMPLETE";
+            }
+            else {
+              //update product stock
+              $sql = "UPDATE products set product_stock = '$rem_qty' WHERE product_name = '".$ar_pro_name[$i]."'";
+              $this->con->query($sql);
+            }
+
             $insert_product = $this->con->prepare("INSERT INTO `invoice_details`(`invoice_no`, `product_name`, `price`, `qty`)
              VALUES (?,?,?,?)");
 

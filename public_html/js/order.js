@@ -109,11 +109,16 @@ $(document).ready(function(){
     /* Order Accepting */
 
     $("#order_form").click(function(){
+
+      var invoice = $("#get_order_data").serialize();
+
+
       $.ajax({
         url : DOMAIN+"/includes/process.php",
         method : "POST",
         data : $("#get_order_data").serialize(),
         success : function(data){
+          $("#get_order_data").trigger("reset");
           alert(data);
         }
       })
