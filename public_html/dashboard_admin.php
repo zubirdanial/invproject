@@ -60,7 +60,7 @@ include_once("./database/constants.php");
                       <div class="card-body">
                         <h5 class="card-title">Manage Staff Account</h5>
                         <p class="card-text">Add or Remove Staff's Account</p>
-                        <a href="#" class="btn btn-primary">Manage</a>
+                        <a href="manage_user.php" class="btn btn-primary">Manage</a>
                       </div>
                     </div>
                   </div>

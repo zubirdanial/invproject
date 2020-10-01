@@ -273,7 +273,7 @@ if (isset($_POST["update_product"])) {
 
 if(isSet($_POST["getNewOrderItem"])){
   $obj = new DBOperation();
-  $rows = $obj->getAllRecord("products");
+  $rows = $obj->getStoreRecord("products");
   ?>
       <tr>
             <td><b class="number">1</b></td>
@@ -333,5 +333,70 @@ if(isset($_POST["order_date"]) AND isset($_POST["cust_name"])){
     $m = new Manage();
     echo $result = $m->storeCustomerOrderInvoice($orderdate,$cust_name,$ar_tqty,$ar_qty,$ar_price,$ar_pro_name,$sub_total,$gst,$discount,$net_total,$paid,$due,$payment_type);
 }
+
+
+
+///////////////////////manage user///////////////
+
+if (isset($_POST["manageUser"])){
+  $m = new Manage();
+  $result = $m-> manageRecordWithPagination("user");
+  $rows = $result["rows"];
+  //$pagination = $result["pagination"];
+  if (count($rows) > 0 ) {
+    //sepatutnya kat bawah ni ada pagination tapi tak jadi
+    $n = 0;
+    foreach ($rows as $row){
+      ?>
+      <tr>
+          <td><?php echo ++$n; ?></td>
+          <td><?php echo $row["username"]; ?></td>
+          <td><?php echo $row["email"]; ?></td>
+          <td><?php echo $row["usertype"]; ?></td>
+          <td><?php echo $row["register_date"]; ?></td>
+          <td><?php echo $row["last_login"]; ?></td>
+
+          <td>
+            <a href="#" did="<?php echo $row['id']; ?>" class="btn btn-danger btn-sm del_user">Delete</a>
+            <a href="#" eid="<?php echo $row['id']; ?>"class="btn btn-info btn-sm edit_user" data-toggle="modal" data-target="#form_user">Update</a>
+          </td>
+      </tr>
+      <?php
+    }
+    ?>
+      <!--<tr>
+        <td colspan="5"> <?php //echo $pagination; ?></td>
+      </tr>-->
+    <?php
+    exit();
+  }
+}
+
+//delete USER
+if (isset($_POST["deleteUser"])) {
+  $m = new Manage();
+  $result = $m ->deleteRecord("user","id",$_POST["id"]);
+  echo $result;
+}
+
+//update USER
+if (isset($_POST["updateUser"])) {
+  $m = new Manage();
+  $result = $m->getSingleRecord("user","id",$_POST["id"]);
+  echo json_encode($result);
+  exit();
+}
+
+//update USER after gettign data
+if (isset($_POST["update_user"])) {
+  $m = new Manage();
+  $id = $_POST["id"];
+  $name = $_POST["update_user"];
+  $result = $m->update_userInfo("user",$id,$name);
+  echo $result;
+
+  exit();
+}
+
 
 ?>

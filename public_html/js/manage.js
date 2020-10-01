@@ -252,4 +252,70 @@ $("body").delegate(".del_product","click",function(){
     })
   })
 
+//////////////////////////Manage User///////////////
+manageUser();
+function manageUser(){
+  $.ajax({
+    url : DOMAIN+"/includes/process.php",
+    method : "POST",
+    data : {manageUser:1},
+    success : function (data){
+        $("#get_user").html(data);
+    }
+  })
+}
+
+$("body").delegate(".del_user","click",function(){
+  var did = $(this).attr("did");
+  if (confirm("ARE YOU SURE YOU WANT TO DELETE ?")) {
+    $.ajax({
+        url : DOMAIN+"/includes/process.php",
+        method : "POST",
+        data : {deleteUser:1,id:did},
+        success : function (data){
+          if(data == "DELETED"){
+            alert("USER DELETED");
+            manageUser(1);
+          }else {
+            alert(data);
+          }
+
+        }
+      })
+  }
+})
+
+$("body").delegate(".edit_user","click",function(){
+  var eid = $(this).attr("eid");
+  $.ajax({
+    url : DOMAIN+"/includes/process.php",
+    method : "POST",
+    dataType : "json",
+    data : {updateUser:1,id:eid},
+    success : function(data){
+      console.log(data);
+      $("#id").val(data["id"]);
+      $("#update_user").val(data["username"]);
+    }
+  })
+})
+
+$("#update_user_form").on("submit",function(){
+  if($("#update_user").val()==""){
+    $("#update_user").addClass("border-danger");
+    $("#user_error").html("<span class='text-danger'>Please enter username</span>");
+  }
+  else {
+    $.ajax({
+      url : DOMAIN+"/includes/process.php",
+      method : "POST",
+      data : $("#update_user_form").serialize(),
+      success : function(data){
+          window.location.href = "";
+      }
+    })
+  }
+})
+
+
 })
