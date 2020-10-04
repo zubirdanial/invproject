@@ -112,15 +112,32 @@ $(document).ready(function(){
 
       var invoice = $("#get_order_data").serialize();
 
+      if ($("#cust_name").val() === "") {
+          alert("Please enter customer name");
+      }else if ($("#paid").val() === "") {
+        alert("Please enter paid amount");
+      }else{
+        $.ajax({
+          url : DOMAIN+"/includes/process.php",
+          method : "POST",
+          data : $("#get_order_data").serialize(),
+          success : function(data){
 
-      $.ajax({
-        url : DOMAIN+"/includes/process.php",
-        method : "POST",
-        data : $("#get_order_data").serialize(),
-        success : function(data){
-          $("#get_order_data").trigger("reset");
-          alert(data);
-        }
-      })
+
+            if (data === "ORDER_COMPLETED"){
+
+                $("#get_order_data").trigger("reset");
+
+                if (confirm("Do you want to print the receipt ?")) {
+                  window.location.href = DOMAIN+"/includes/invoice_bill.php?"+invoice;
+                }
+            }else {
+              alert("Error");
+            }
+          }
+
+        })
+      }
+
     })
 });

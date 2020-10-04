@@ -25,9 +25,9 @@ include_once("./database/constants.php");
           <div class="card mx-auto" >
             <img class="card-img-top mx-auto" style="width:60%;" src="./images/images.png" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Profile Info</h5>
-              <p class="card-text"><i class="fa fa-user"></i>&nbsp;Satay Sedap</p>
-              <p class="card-text"><i class="fa fa-user"></i>&nbsp;Staff</p> 
+              <h5 class="card-title">SATAY SEDAP STORAGE SYSTEM</h5>
+              <p class="card-text"><i class="fa fa-map-marker"></i>&nbsp;Satay Sedap Ukay Perdana</p>
+              <p class="card-text"><i class="fa fa-id-badge"></i>&nbsp;Staff</p>
 
               <!--<p class="card-text">Last Login : xxxxxx</p> -->
               <a href="profilePage.php" class="btn btn-warning"><i class="fa fa-user-circle"> &nbsp; </i>View Profile</a>
