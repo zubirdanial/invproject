@@ -18,7 +18,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">ADD</button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle"> &nbsp; </i>Add Brand</button>
         </form>
 
       </div>

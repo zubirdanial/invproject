@@ -18,10 +18,9 @@ include_once("./database/constants.php");
   <body>
     <!-- Navabr -->
 <?php include_once("./templates/header.php"); ?>
-  <br><br>
-
-<p></p>
-<p></p>
+<br>
+<center><h1>Manage Products</h1><center>
+<br>
 
     <div class="container">
       <table class="table table-hover table-bordered">

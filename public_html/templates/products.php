@@ -45,7 +45,7 @@
             <label>Quantity</label>
             <input type="text" class="form-control" id="product_qty" name="product_qty" placeholder="Enter Quantity" required/>
           </div>
-          <button type="submit" class="btn btn-primary">Add Product</button>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle"> &nbsp; </i>Add Product</button>
         </form>
 
       </div>

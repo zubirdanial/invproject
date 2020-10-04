@@ -18,16 +18,15 @@ include_once("./database/constants.php");
   <body>
     <!-- Navabr -->
 <?php include_once("./templates/header_admin.php"); ?>
-  <br><br>
-
-<p></p>
-<p></p>
+<br>
+<center><h1>Manage User</h1><center>
+<br>
 
     <div class="container">
       <table class="table table-hover table-bordered">
                   <thead>
                     <tr>
-                      <th>Number #</th>
+                      <th>#</th>
                       <th>Username</th>
                       <th>Email</th>
                       <th>User Type</th>

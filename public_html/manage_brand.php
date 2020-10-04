@@ -18,16 +18,15 @@ include_once("./database/constants.php");
   <body>
     <!-- Navabr -->
 <?php include_once("./templates/header.php"); ?>
-  <br><br>
-
-<p></p>
-<p></p>
+<br>
+<center><h1>Manage Brands</h1><center>
+<br>
 
     <div class="container">
       <table class="table table-hover table-bordered">
                   <thead>
                     <tr>
-                      <th>Number #</th>
+                      <th>#</th>
                       <th>Brand</th>
                       <th>Status</th>
                       <th>Action</th>

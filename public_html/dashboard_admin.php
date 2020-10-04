@@ -35,13 +35,13 @@ include_once("./database/constants.php");
       <div class="row">
         <div class="col-md-4">
           <div class="card mx-auto" >
-            <img class="card-img-top mx-auto" style="width:60%;" src="./images/user.png" alt="Card image cap">
+            <img class="card-img-top mx-auto" style="width:60%;" src="./images/images.png" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Profile Info</h5>
               <p class="card-text"><i class="fa fa-user"></i>&nbsp;Satay Sedap</p>
               <p class="card-text"><i class="fa fa-user"></i>&nbsp;Admin</p>
               <!--<p class="card-text">Last Login : xxxxxx</p> -->
-              <a href="profilePage_Admin.php" class="btn btn-primary"><i class="fa fa-edit"> &nbsp; </i>View Profile</a>
+              <a href="profilePage_Admin.php" class="btn btn-warning"><i class="fa fa-user-circle"> &nbsp; </i>View Profile</a>
             </div>
           </div>
             </div>
@@ -59,8 +59,8 @@ include_once("./database/constants.php");
                     <div class="card">
                       <div class="card-body">
                         <h5 class="card-title">Manage Staff Account</h5>
-                        <p class="card-text">Add or Remove Staff's Account</p>
-                        <a href="manage_user.php" class="btn btn-primary">Manage</a>
+                        <p class="card-text">Update or Remove Staff's Account</p>
+                        <a href="manage_user.php" class="btn btn-primary"><i class="fa fa-edit"> &nbsp; </i>Manage</a>
                       </div>
                     </div>
                   </div>

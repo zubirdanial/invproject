@@ -26,7 +26,7 @@
               <small id="cat_error" class="form-text text-muted"></small>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle"> &nbsp; </i>Add Category</button>
         </form>
 
       </div>

@@ -23,13 +23,14 @@ include_once("./database/constants.php");
       <div class="row">
         <div class="col-md-4">
           <div class="card mx-auto" >
-            <img class="card-img-top mx-auto" style="width:60%;" src="./images/user.png" alt="Card image cap">
+            <img class="card-img-top mx-auto" style="width:60%;" src="./images/images.png" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Profile Info</h5>
               <p class="card-text"><i class="fa fa-user"></i>&nbsp;Satay Sedap</p>
-              <p class="card-text"><i class="fa fa-user"></i>&nbsp;Staff</p>
+              <p class="card-text"><i class="fa fa-user"></i>&nbsp;Staff</p> 
+
               <!--<p class="card-text">Last Login : xxxxxx</p> -->
-              <a href="profilePage.php" class="btn btn-primary"><i class="fa fa-edit"> &nbsp; </i>View Profile</a>
+              <a href="profilePage.php" class="btn btn-warning"><i class="fa fa-user-circle"> &nbsp; </i>View Profile</a>
             </div>
           </div>
             </div>
@@ -48,7 +49,7 @@ include_once("./database/constants.php");
                       <div class="card-body">
                         <h5 class="card-title">New Orders</h5>
                         <p class="card-text">Record customers order and create new orders</p>
-                        <a href="new_order.php" class="btn btn-primary">New Orders</a>
+                        <a href="new_order.php" class="btn btn-primary"><i class="fa fa-plus-circle">&nbsp;</i>New Orders</a>
                       </div>
                     </div>
                   </div>
@@ -70,8 +71,8 @@ include_once("./database/constants.php");
             <div class="card-body">
               <h5 class="card-title">Categories</h5>
               <p class="card-text">Manage or add item's category</p>
-              <a href="#" data-toggle="modal" data-target="#form_category" class="btn btn-primary">Add</a>
-              <a href="manage_categories.php" class="btn btn-primary">Manage</a>
+              <a href="#" data-toggle="modal" data-target="#form_category" class="btn btn-primary"><i class="fa fa-plus-circle">&nbsp;</i>Add</a>
+              <a href="manage_categories.php" class="btn btn-success"><i class="fa fa-edit">&nbsp;</i>Manage</a>
             </div>
           </div>
         </div>
@@ -81,8 +82,8 @@ include_once("./database/constants.php");
             <div class="card-body">
               <h5 class="card-title">Brands</h5>
               <p class="card-text">Manage or add brands</p>
-              <a href="#" data-toggle="modal" data-target="#form_brand" class="btn btn-primary">Add</a>
-              <a href="manage_brand.php" class="btn btn-primary">Manage</a>
+              <a href="#" data-toggle="modal" data-target="#form_brand" class="btn btn-primary"><i class="fa fa-plus-circle">&nbsp;</i>Add</a>
+              <a href="manage_brand.php" class="btn btn-success"><i class="fa fa-edit">&nbsp;</i>Manage</a>
             </div>
           </div>
         </div>
@@ -92,8 +93,8 @@ include_once("./database/constants.php");
             <div class="card-body">
               <h5 class="card-title">Products</h5>
               <p class="card-text">Manage or add product</p>
-              <a href="#" data-toggle="modal" data-target="#form_products" class="btn btn-primary">Add</a>
-              <a href="manage_product.php" class="btn btn-primary">Manage</a>
+              <a href="#" data-toggle="modal" data-target="#form_products" class="btn btn-primary"><i class="fa fa-plus-circle">&nbsp;</i>Add</a>
+              <a href="manage_product.php" class="btn btn-success"><i class="fa fa-edit">&nbsp;</i>Manage</a>
             </div>
           </div>
         </div>
